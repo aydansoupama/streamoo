@@ -1,8 +1,9 @@
-export default function Gender({content}) {
+export default function Genre({content}) {
     const genres = {
         28: 'Action',
         12: 'Adventure',
         16: 'Animation',
+        35: 'Comedy',
         35: 'Comedy',
         80: 'Crime',
         99: 'Documentary',
@@ -18,17 +19,29 @@ export default function Gender({content}) {
         10770: 'TV Movie',
         53: 'Thriller',
         10752: 'War',
-        37: 'Western'
+        37: 'Western',
+        10759: 'Action & Adventure',
+        10762: 'Kids',
+        10763: 'News',
+        10764: 'Reality',
+        10765: 'Sci-Fi & Fantasy',
+        10766: 'Soap',
+        10767: 'Talk',
+        10768: 'War & Politics'
     };
 
-    const genreNames = movie.genre_ids
+    const genreNames = content.genre_ids
         .map((genreId) => genres[genreId])
-        .slice(0, 2); // Limit to 2 genre names
+        .slice(0, 2);
+
+    if (!content.genre_ids || content.genre_ids.length === 0) {
+        return null;
+    }
 
     return (
         <>
             {genreNames.map((genreName) => (
-                <div className={"badge badge-outline"}>
+                <div className={"badge badge-outline"} key={genreName}>
                     <h1 key={genreName}>{genreName}</h1>
                 </div>
             ))}
