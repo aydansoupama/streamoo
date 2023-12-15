@@ -1,10 +1,11 @@
 "use client"
 import {useEffect, useState} from "react";
 
-export default function DetailsPage({params}) {
+export default function DetailsPage(props: any) {
     const [content, setContent] = useState({})
+
     useEffect(() => {
-        let url = 'https://api.themoviedb.org/3/movie/' + params.slug;
+        let url = 'https://api.themoviedb.org/3/movie/' + props.params.slug;
         let options = {
             method: 'GET',
             headers: {
@@ -19,7 +20,7 @@ export default function DetailsPage({params}) {
             .catch(error => console.error('Error fetching movies:', error));
     }, []);
 
-    let platforms = ["Netflix", "Canal +", "Disney +", "Amazon Prime", "OCS", "Paramount", "Apple TV", "CrunchyRoll", "ADN", ""]
+    let platforms = ["Netflix", "Canal +", "Disney +", "Amazon Prime", "OCS", "Paramount", "Apple TV", "CrunchyRoll", "ADN"]
 
     return (
         <main>
@@ -28,13 +29,10 @@ export default function DetailsPage({params}) {
                     <div className="container">
 
                         <figure className="movie-detail-banner">
-
-                            <img src={`https://image.tmdb.org/t/p/w500/${content.poster_path}`} alt={`${content.title} poster `} />
-
-                                <button className="play-btn">
-                                    <ion-icon name="play-circle-outline"></ion-icon>
-                                </button>
-
+                            <img src={`https://image.tmdb.org/t/p/w500/` + content.poster_path} alt={`${content.title} poster `} />
+                            <button className="play-btn">
+                                <ion-icon name="play-circle-outline"></ion-icon>
+                            </button>
                         </figure>
 
                         <div className="movie-detail-content">
@@ -89,8 +87,7 @@ export default function DetailsPage({params}) {
                                 </button>
 
                                 <div className="title-wrapper">
-                                    <p className="title">{platforms[(Math.floor(Math.random() * platforms.length)) - 1]}</p>
-
+                                    <p className="title">{platforms[0]}</p>
                                     <p className="text">Streaming Channels</p>
                                 </div>
 
