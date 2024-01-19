@@ -20,11 +20,11 @@ export default function Genre({content}) {
         53: 'Thriller',
         10752: 'War',
         37: 'Western',
-        10759: 'Action & Adventure',
+        10759: 'Acture',
         10762: 'Kids',
         10763: 'News',
         10764: 'Reality',
-        10765: 'Sci-Fi & Fantasy',
+        10765: 'Sci-tasy',
         10766: 'Soap',
         10767: 'Talk',
         10768: 'War & Politics'

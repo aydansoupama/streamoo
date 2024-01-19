@@ -1,6 +1,7 @@
 "use client";
 import {useState, useEffect} from "react";
 import Genre from "@/components/Genre";
+import Image from "next/image";
 
 
 export default function HomeTVShow() {
@@ -32,7 +33,7 @@ export default function HomeTVShow() {
 
                         <a href={`/serie/details/${serie.id}`}>
                             <figure className="card-banner">
-                                <img src={`https://image.tmdb.org/t/p/w500/${serie.poster_path}`} alt="Poster" />
+                                <Image src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} width={500} height={500} alt="Poster" />
                             </figure>
                         </a>
 

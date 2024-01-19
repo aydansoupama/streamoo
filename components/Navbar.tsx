@@ -1,3 +1,5 @@
+import Search from "@/components/Search";
+
 export default function Navbar() {
     return (
         <header className="header" data-header>
@@ -10,6 +12,15 @@ export default function Navbar() {
                 </a>
 
                 <div className="header-actions">
+
+                    <div className="relative flex flex-1 flex-shrink-0">
+                        <label htmlFor="search" className="sr-only">
+                            Search
+                        </label>
+
+                        {/*Search system*/}
+                        <Search placeholder="Search invoices..." />
+                    </div>
 
                     <button className="search-btn">
                         <ion-icon name="search-outline"></ion-icon>
@@ -47,15 +58,7 @@ export default function Navbar() {
 
                     <ul className="navbar-list">
                         <li>
-                            <a href="./index.html" className="navbar-link">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#" className="navbar-link">Movie</a>
-                        </li>
-
-                        <li>
-                            <a href="#" className="navbar-link">Tv Show</a>
+                            <a href="/" className="navbar-link">Home</a>
                         </li>
                     </ul>
 

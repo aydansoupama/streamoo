@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 
 export default function DetailsPage(props: any) {
     const [content, setContent] = useState({})
+    const [currentPlatform, setCurrentPlatform] = useState()
 
     useEffect(() => {
         let url = 'https://api.themoviedb.org/3/movie/' + props.params.slug;
@@ -21,6 +22,12 @@ export default function DetailsPage(props: any) {
     }, []);
 
     let platforms = ["Netflix", "Canal +", "Disney +", "Amazon Prime", "OCS", "Paramount", "Apple TV", "CrunchyRoll", "ADN"]
+
+    useEffect(() => {
+        if ( currentPlatform === undefined ) {
+            setCurrentPlatform(platforms[Math.round(Math.random() * platforms.length)])
+        }
+    }, [currentPlatform])
 
     return (
         <main>
@@ -87,7 +94,7 @@ export default function DetailsPage(props: any) {
                                 </button>
 
                                 <div className="title-wrapper">
-                                    <p className="title">{platforms[0]}</p>
+                                    <p className="title">{currentPlatform}</p>
                                     <p className="text">Streaming Channels</p>
                                 </div>
 

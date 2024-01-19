@@ -1,9 +1,10 @@
 "use client"
 import {useEffect, useState} from "react";
-import Genre from "@/components/Genre";
 
 export default function DetailsPage({params}) {
     const [content, setContent] = useState({})
+    const [currentPlatform, setCurrentPlatform] = useState()
+
     useEffect(() => {
         let url = 'https://api.themoviedb.org/3/tv/' + params.slug;
         let options = {
@@ -21,6 +22,12 @@ export default function DetailsPage({params}) {
     }, []);
 
     let platforms = ["Netflix", "Canal +", "Disney +", "Amazon Prime", "OCS", "Paramount", "Apple TV", "CrunchyRoll", "ADN", ""]
+
+    useEffect(() => {
+        if ( currentPlatform === undefined ) {
+            setCurrentPlatform(platforms[Math.round(Math.random() * platforms.length)])
+        }
+    }, [currentPlatform])
 
     let numberOfSeasons= 0;
     for(let key in content.seasons) {
@@ -98,8 +105,7 @@ export default function DetailsPage({params}) {
                                 </button>
 
                                 <div className="title-wrapper">
-                                    <p className="title">{platforms[(Math.floor(Math.random() * platforms.length)) - 1]}</p>
-
+                                    <p className="title">{currentPlatform}</p>
                                     <p className="text">Streaming Channels</p>
                                 </div>
 
@@ -116,9 +122,7 @@ export default function DetailsPage({params}) {
 
                                 <ion-icon name="download-outline"></ion-icon>
                             </a>
-
                         </div>
-
                     </div>
                 </section>
             </article>
